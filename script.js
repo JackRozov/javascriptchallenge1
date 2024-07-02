@@ -1,20 +1,63 @@
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
+
+
 // Collect employee data
-const collectEmployees = function() {
-  // TODO: Get user input to create and return an array of employee objects 
-}
+const employeesArray = [];
+
+
+const collectEmployees = function () {
+  let keepGoing = true;
+
+  while (keepGoing) {
+    
+    const firstName = prompt("Please enter the employee's first name");
+    const lastName = prompt("Please enter the employee's last name");
+    let salary = prompt("Please enter the employee's salary");
+
+    
+    const employee = {
+      firstName: firstName,
+      lastName: lastName,
+      salary: parseFloat(salary)
+    }
+    
+    employeesArray.push(employee);
+
+    keepGoing = confirm("Would you like to add another employee?");
+    
+  }
+  return employeesArray;
+};
+console.log(employeesArray); 
+
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
-}
+  let count = 0;
+  let total = 0; 
+  for(let i=0; i < employeesArray.length; i++) {
+    if(employeesArray[i] !== undefined) {
+      count++;
+      total += employeesArray [i].salary;
+    }
+  }  
+let avg = total / count;
+console.log(avg);
+  
+  }
+
+
+
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
-  // TODO: Select and display a random employee
+  return this[Math.floor((Math.random()*this.length))];
+
+console.log(employeesArray [0])
 }
+
 
 /*
   ====================
@@ -81,3 +124,4 @@ const trackEmployeeData = function() {
 
 // Add event listener to 'Add Employees' button
 addEmployeesBtn.addEventListener('click', trackEmployeeData);
+
